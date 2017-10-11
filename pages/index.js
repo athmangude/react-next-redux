@@ -13,23 +13,25 @@ import * as appActions from './flux/actions';
     ...state
   }),
   dispatch => ({
-    updateAppState: bindActionCreators(appActions.updateAppState, dispatch),
+    appActions: bindActionCreators(appActions, dispatch),
     dispatch,
   }),
 )
 export default class Index extends Component {
-  static getInitialProps({store, isServer, pathname, query}) {
-    store.dispatch({type: 'FOO', payload: 'foo'}); // component will be able to read from store's state when rendered
-    return {custom: 'custom'}; // you can pass some custom props to component from here
-  }
 
   static getInitialProps({ store, isServer, pathname, query }) {
+    console.log(store, isServer, pathname, query);
     store.dispatch(appActions.updateAppState(true));
-    return { name: 'Athman' };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      // console.log('WILL DISPATCH AN ACTION', this.props);
+      this.props.appActions.updateAppState(true);
+    }, 1000);
   }
 
   render() {
-    console.log('we are in here at the moment', this.props);
     return (
       <div>
         Hello Next <Link href="/about"><a>About</a></Link>
@@ -37,9 +39,3 @@ export default class Index extends Component {
     );
   }
 }
-
-// Index = withRedux(configureStore, (state) => ({
-//   ...state
-// }))(Index);
-
-// export default Index;
