@@ -7,12 +7,14 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "deploy": "now",
+    "deploy": "now"
   },
   "author": "Athman Gude",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "next": "^4.0.3"
+    "next": "^4.0.3",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }
