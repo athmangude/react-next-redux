@@ -1,0 +1,18 @@
+{
+  "name": "smala-dashboards",
+  "version": "0.0.0",
+  "description": "dashboards for Smala data",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "now",
+  },
+  "author": "Athman Gude",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "next": "^4.0.3"
+  }
+}
