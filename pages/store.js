@@ -4,7 +4,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createReducer from './reducers';
 
 export default function configureStore(initialState = {}, config = {}) {
-  // console.log(initialState, config);
   const middlewares = [thunkMiddleware];
 
   const enhancers = [
@@ -12,7 +11,7 @@ export default function configureStore(initialState = {}, config = {}) {
   ]
 
   const store = createStore(
-    createReducer,
+    createReducer(),
     initialState,
     composeWithDevTools(...enhancers)
   );

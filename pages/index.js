@@ -20,14 +20,16 @@ import * as appActions from './flux/actions';
 export default class Index extends Component {
 
   static async getInitialProps({ store, isServer, pathname, query }) {
-    console.log(store.getState());
     store.dispatch(appActions.updateAppState(false));
     return {};
   }
 
   componentDidMount() {
-    console.log(this.props);
-    this.props.appActions.updateAppState(true);
+    this.updateAppState(true);
+  }
+
+  async updateAppState() {
+    await this.props.appActions.updateAppState(true);
   }
 
   render() {
