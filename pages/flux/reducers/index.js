@@ -12,7 +12,7 @@ const actionsMap = {
 }
 
 export default function app(state = initialState, action) {
-  console.log(state, action, AppActionTypes, action.type, AppActionTypes[action.type]);
+  console.log(action, action.type);
   const reduceFunction = actionsMap[action.type];
   if (reduceFunction) {
     return reduceFunction(state, action);

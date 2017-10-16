@@ -3,7 +3,8 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createReducer from './reducers';
 
-export default function configureStore() {
+export default function configureStore(initialState = {}, config = {}) {
+  // console.log(initialState, config);
   const middlewares = [thunkMiddleware];
 
   const enhancers = [
@@ -12,7 +13,7 @@ export default function configureStore() {
 
   const store = createStore(
     createReducer,
-    undefined,
+    initialState,
     composeWithDevTools(...enhancers)
   );
 

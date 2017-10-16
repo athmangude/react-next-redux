@@ -19,16 +19,15 @@ import * as appActions from './flux/actions';
 )
 export default class Index extends Component {
 
-  static getInitialProps({ store, isServer, pathname, query }) {
-    console.log(store, isServer, pathname, query);
-    store.dispatch(appActions.updateAppState(true));
+  static async getInitialProps({ store, isServer, pathname, query }) {
+    console.log(store.getState());
+    store.dispatch(appActions.updateAppState(false));
+    return {};
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      // console.log('WILL DISPATCH AN ACTION', this.props);
-      this.props.appActions.updateAppState(true);
-    }, 1000);
+    console.log(this.props);
+    this.props.appActions.updateAppState(true);
   }
 
   render() {
